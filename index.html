@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recent GK with Basic View - বই অর্ডার করুন</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #eef2f3, #d9e4f5);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0078d7, #005fa3);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 70%);
+      animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-section {
+      max-width: 950px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      transition: 0.3s;
+    }
+
+    .book-section:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-section img {
+      width: 100%;
+      max-width: 340px;
+      border-radius: 12px;
+      transition: 0.5s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .book-section img:hover {
+      transform: scale(1.05);
+    }
+
+    .book-details {
+      flex: 1 1 400px;
+    }
+
+    .book-details h2 {
+      font-size: 30px;
+      color: #0078d7;
+      margin-bottom: 15px;
+    }
+
+    .book-details p {
+      line-height: 1.7;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      list-style: "⭐ ";
+      margin-left: 20px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: #111;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0078d7;
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #005fa3;
+      transform: translateY(-2px);
+    }
+
+    .order-form {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .order-form h3 {
+      text-align: center;
+      color: #0078d7;
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0078d7;
+      outline: none;
+    }
+
+    button {
+      background: #28a745;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1e7e34;
+      transform: scale(1.03);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      background: #e7f9ed;
+      border: 1px solid #28a745;
+      color: #1e7e34;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      background: #0078d7;
+      color: white;
+      padding: 20px;
+      margin-top: 80px;
+      border-radius: 15px 15px 0 0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 28px; }
+      .book-section { flex-direction: column; text-align: center; }
+      .book-details { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📘 Recent GK with Basic View</h1>
+    <p>চাকরির প্রস্তুতির জন্য সর্বশেষ সাধারণ জ্ঞানের সেরা বই</p>
+  </header>
+
+  <section class="book-section">
+    <img src="book.jpeg" alt="Recent GK Book Cover" />
+    <div class="book-details">
+      <h2>Recent GK with Basic View</h2>
+      <p>
+        এই বইটিতে পাবেন সর্বশেষ সাধারণ জ্ঞান, গুরুত্বপূর্ণ প্রশ্নোত্তর এবং চাকরির পরীক্ষায় সহায়ক তথ্যসমূহ।
+      </p>
+      <ul class="features">
+        <li>সাম্প্রতিক বছরগুলোর গুরুত্বপূর্ণ GK আপডেট</li>
+        <li>বাংলাদেশ ও আন্তর্জাতিক বিষয়াবলী সংকলন</li>
+        <li>চাকরির প্রস্তুতি অনুযায়ী সাজানো প্রশ্নোত্তর</li>
+        <li>সহজ ভাষায় ব্যাখ্যা ও বিশ্লেষণ</li>
+        <li>স্মার্ট রিভিশন সেকশন সহ</li>
+      </ul>
+      <p class="price">💰 মূল্য: ৪০০ টাকা (ডেলিভারি চার্জসহ)</p>
+      <a href="#order" class="btn">এখনই অর্ডার করুন</a>
+    </div>
+  </section>
+
+  <section class="order-form" id="order">
+    <h3>অর্ডার ফরম</h3>
+
+    <!-- ✅ নিচের action এ তোমার Formspree লিংক বসাও -->
+    <form id="orderForm" action="https://formspree.io/f/xdkpzajo" method="POST">
+      <input type="text" name="name" placeholder="আপনার নাম" required />
+      <input type="text" name="address" placeholder="ঠিকানা" required />
+      <input type="text" name="phone" placeholder="মোবাইল নাম্বার" required />
+      <textarea name="note" placeholder="অতিরিক্ত মন্তব্য (যদি থাকে)" rows="3"></textarea>
+      <button type="submit">অর্ডার পাঠান 📩</button>
+      <div class="success-message" id="successMsg">
+        ✅ আপনার অর্ডার সফলভাবে পাঠানো হয়েছে!
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Recent GK | Designed by Rased</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("orderForm");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        successMsg.style.display = "block";
+        form.reset();
+        window.scrollTo({ top: successMsg.offsetTop - 100, behavior: "smooth" });
+      } else {
+        alert("❌ দুঃখিত! কিছু সমস্যা হয়েছে, আবার চেষ্টা করুন।");
+      }
+    });
+  </script>
+</body>
+</html>
